@@ -149,8 +149,7 @@ function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow(
         {
-            width: 1020,
-            height: 600,
+            fullscreen: true,
             webPreferences: {
                 nodeIntegration: true
             }
@@ -176,6 +175,7 @@ function createWindow() {
 
     var menu = Menu.buildFromTemplate(application_menu);
     Menu.setApplicationMenu(menu);
+    Menu.setApplicationMenu(null);
     ipcMain.on('fileDrop', (event, arg) => {
         console.log("fileDrop:", arg);
         onVideoFileSeleted(arg);

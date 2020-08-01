@@ -18,7 +18,7 @@ function createVideoHtml(source){
 
 var holder = document.getElementById('holder');
 let videoContainer = document.getElementById("video-container")
-let videoHtml = createVideoHtml("http://vjs.zencdn.net/v/oceans.mp4")
+let videoHtml = createVideoHtml("http://127.0.0.1/a.mp4")
 videoContainer.innerHTML = videoHtml;
 
 var newSettings = {
@@ -42,7 +42,15 @@ holder.ondrop = function (e) {
 };
 let vid = document.getElementById("my-video");
 
+
+
+
 let player = videojs(vid);
+player.enterFullWindow();
+player.userActive(false);
+player.autoplay(true);
+player.controls(false);
+player.loop(true);
 document.onkeydown = (event) => {
     console.log("onkeypress", event);
     if (event.code === "Space") {
@@ -56,6 +64,7 @@ document.onkeydown = (event) => {
         return false;
     }
 }
+
 
 ipcRenderer.on('fileSelected', function (event, message) {
     console.log('fileSelected:', message)
